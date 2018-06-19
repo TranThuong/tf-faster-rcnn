@@ -20,7 +20,6 @@ RUN apt-get update && \
                   git \
                   -y
 
-
 # Get required python modules
 RUN pip install --upgrade pip
 COPY requirements.txt .
@@ -29,10 +28,14 @@ RUN pip install -r requirements.txt
 # Update numpy
 RUN pip install -U numpy
 
+# Install python interface for COCO
+RUN git clone https://github.com/pdollar/coco.git
+WORKDIR /root/coco/PythonAPI
+RUN make
+
 RUN apt-get update
 RUN apt-get install cuda nvidia-cuda-toolkit -y
 RUN apt-get install libgeos-dev -y
-
 
 WORKDIR /ai/tf-faster-rcnn
 
