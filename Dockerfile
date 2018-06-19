@@ -38,7 +38,6 @@ WORKDIR /ai/tf-faster-rcnn
 
 ADD ./lib  ./lib
 ADD tools ./tools
-ADD data ./data
 
 # Add CUDA to the path
 ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/cuda/lib64
